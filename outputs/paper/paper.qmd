@@ -1,6 +1,6 @@
 ---
 title: "Expanding the Popularity of the NHL Through Increased Goal Scoring"
-subtitle: "An Analysis of the Increase in Goal Scoring During from 2011 to 2023"
+subtitle: "An Analysis of the Increase in Goal Scoring From 2011 to 2023"
 author: 
   - Jason Ngo
 thanks: "Code and data are available at: https://github.com/thejasonminh/nhlpoints"
