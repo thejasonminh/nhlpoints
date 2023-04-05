@@ -1,14 +1,16 @@
 ---
-title: "My title"
-subtitle: "My subtitle if needed"
+title: "Expanding the Popularity of the NHL Through Increased Goal Scoring"
+subtitle: "An Analysis of the Increase in Goal Scoring During from 2011 to 2023"
 author: 
-  - First author
-  - Another author
-thanks: "Code and data are available at: LINK."
+  - Jason Ngo
+thanks: "Code and data are available at: https://github.com/thejasonminh/nhlpoints"
 date: "`r Sys.time()`"
 date-format: "D MMMM YYYY"
-abstract: "First sentence. Second sentence. Third sentence. Fourth sentence."
-format: pdf
+format: 
+  pdf:
+    documentclass: article
+    geometry: margin = 1in
+    abstract: "Of the four major sports in the USA, the NHL is the least popular. In an effort to grow the game and make the game more exciting, the NHL wanted to increase goal scoring. Using data from the NHL, the paper will use graphs and tables to analyze average leaguewide goal scoring per game from the 2011-2012 to 2022-2023 seaons. A linear regression model will also be created to predict goal scoring averages in the upcoming seasons. Results show that the NHL was succesful in their mission as the average goals per game increased per season, with the current season exhibiting the highest average goals per game in a 10 year period. These findings suggest that factors such as increased player talent, more penalties and rule changes have resulted in more goals scored every season. To further grow the game, analysis on the topic of matchups, streaming, and media narratives is recommended."
 number-sections: true
 bibliography: references.bib
 ---
@@ -19,99 +21,30 @@ bibliography: references.bib
 #| message: false
 
 library(tidyverse)
-library(palmerpenguins)
 ```
 
 
 # Introduction
 
-You can and should cross-reference sections and sub-sections. For instance, @sec-data and @sec-first-point. 
+Hockey, Baseball, Football, and Basketball have become so popular in the United States, they've become branded as the "Four Major Sports of the USA." The top leagues that operate in each sport: The NHL, MLB, NFL and NBA are centralized in the USA. Many of the top players that have played, or currently play, in these leagues are American, and their popularity only serves to inspire more youth to follow in their footsteps. There are no other sports that can threaten the stranglehold that these four sports have on the USA.
 
+However, Hockey has begun to fall behind the other three. Viewership, revenue and general popularity all pale in comparison to the other three leagues. As a result; player salaries are lower in comparison to other sports and there is less youth talent in the pipelines. Two of the biggest factors for this decline are: High prices and low scoring. Due to the high upfront price of equipment and the amount of equipment required, many kids elect not to choose hockey as their sport and instead elect for cheaper options such as basketball, which only requires proper footwear. Low scoring was a result of goalies having too much freedom, and teams creating bulletproof defensive tactics that involved clogging the middle of the ice and using their goalie to stifle momentum.
+
+As a response to the declining popularity, the NHL decided to implement rule changes with the primary motive of increasing goal scoring in mind. By increasing goal scoring, games would be more exciting which in turn, would lead to increased viewership. This paper will analyze the effectiveness of these changes by drawing data from the NHL to analyze average leaguewide goal scoring per game from the 2011-2012 season to the current (2022-2023) season. In addition, the paper will draw on a linear regression model to predict average goal scoring for future seasons. The findings show that the rule changes, in addition to increased player talent, greatly increased average goals scored per game with every season. The NHL has successfully made the game more exciting by encouraging more goals, which drew more eyes to the game, but how can they keep those eyes glued to the game?
+
+In section 1 of the paper, the source of the data is discussed. Strengths and weaknesses, methods of collection and terminologies will be explored. Section 2 of the paper will introduce a linear model, its justifications, and how it was constructed. Section 3 will discuss the results, touching on the trends and events that occurred over a 10-season period. Section 4 of the paper will touch on the factors that contributed to increased goal scoring. Weaknesses and next steps will be discussed in the final section of the paper.
 
 
 # Data {#sec-data}
-
-Our data is of penguins (@fig-bills).
-
-```{r}
-#| label: fig-bills
-#| fig-cap: Bills of penguins
-#| echo: false
-
-ggplot(penguins, aes(x = island, fill = species)) +
-  geom_bar(alpha = 0.8) +
-  scale_fill_manual(values = c("darkorange","purple","cyan4"),
-                    guide = "none") +
-  theme_minimal() +
-  facet_wrap(~species, ncol = 1) +
-  coord_flip()
-```
-
-Talk more about it.
-
-Also bills and their average (@fig-billssssss). (You can change the height and width, but don't worry about doing that until you have finished every other aspect of the paper - Quarto will try to make it look nice and the defaults usually work.)
-
-```{r}
-#| label: fig-billssssss
-#| fig-cap: More bills of penguins
-#| echo: false
-#| fig-width: 8
-#| fig-height: 4
-
-ggplot(penguins, aes(x = island, fill = species)) +
-  geom_bar(alpha = 0.8) +
-  scale_fill_manual(values = c("darkorange","purple","cyan4"),
-                    guide = "none") +
-  theme_minimal() +
-  facet_wrap(~species, ncol = 1) +
-  coord_flip()
-```
-
-Talk way more about it. 
-
-
+[@citeR]
 
 # Model
-
-$$
-Pr(\theta | y) = \frac{Pr(y | \theta) Pr(\theta)}{Pr(y)}
-$$ {#eq-bayes}
-
-@eq-bayes seems useful, eh?
-
-Here's a dumb example of how to use some references: In paper we run our analysis in `R` [@citeR]. We also use the `tidyverse` which was written by @thereferencecanbewhatever If we were interested in baseball data then @citeLahman could be useful. 
-
-We can use maths by including latex between dollar signs, for instance $\theta$.
-
 
 # Results
 
 # Discussion
 
-## First discussion point {#sec-first-point}
-
-If my paper were 10 pages, then should be be at least 2.5 pages. The discussion is a chance to show off what you know and what you learnt from all this. 
-
-## Second discussion point
-
-## Third discussion point
-
-## Weaknesses and next steps
-
-Weaknesses and next steps should also be included.
-
 \newpage
-
-\appendix
-
-# Appendix {-}
-
-
-# Additional details
-
-
-\newpage
-
 
 # References
 
