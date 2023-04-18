@@ -24,6 +24,8 @@ teams1415 <- read_excel(here::here("inputs/data/Summaryteam_1415.xlsx"))
 teams1314 <- read_excel(here::here("inputs/data/Summaryteam_1314.xlsx"))
 teams1213 <- read_excel(here::here("inputs/data/Summaryteam_1213.xlsx"))
 teams1112 <- read_excel(here::here("inputs/data/Summaryteam_1112.xlsx"))
+penalties <- read_excel(here::here("inputs/data/Penaltiesteams_2223.xlsx"))
+shooting <- read_excel(here::here("inputs/data/teamshooting2223.xlsx"))
 
 #### Clean data ####
 
@@ -160,6 +162,24 @@ pp_12seasons <- pp_12seasons |> rename(Power_play_percentage = mean)
 ## And lastly, let's round the values ##
 pp_12seasons <- round(pp_12seasons, 2)
 
+### Making a data frame for the model ###
+
+## We want to add penalty data to our model dataset, so lets grab it ##
+pen_drawn <- penalties |> select(`Pen Drawn/60`)
+model_data_2223 <- cbind(teams2223, pen_drawn)
+model_data_2223 <- model_data_2223 |> rename(
+  "GFGP" = "GF/GP",
+  "Pen60" = "Pen Drawn/60"
+)
+
+## Next lets get team shooting percentage ##
+shooting_pct <- shooting |> select(`S%`)
+model_data_2223 <- cbind(model_data_2223, shooting_pct)
+model_data_2223 <- model_data_2223 |> rename(
+  "SPct" = "S%"
+)
+
+
 
 #### Save data ####
 ## Let's save the 3 master dataframes we created
@@ -167,4 +187,5 @@ pp_12seasons <- round(pp_12seasons, 2)
 write_csv(agfpg_12seasons, here::here("outputs/data/avgoals_12seasons.csv"))
 write_csv(shots_12seasons, here::here("outputs/data/avshots_12seasons.csv"))
 write_csv(pp_12seasons, here::here("outputs/data/pp_12seasons.csv"))
+write_csv(model_data_2223, here::here("outputs/data/leaguedata2223.csv"))
 

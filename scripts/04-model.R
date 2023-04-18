@@ -1,11 +1,9 @@
 #### Preamble ####
-# Purpose: Models... [...UPDATE THIS...]
-# Author: Rohan Alexander [...UPDATE THIS...]
-# Date: 11 February 2023 [...UPDATE THIS...]
-# Contact: rohan.alexander@utoronto.ca [...UPDATE THIS...]
+# Purpose: Generates a linear model based on NHL data
+# Author: Jason Ngo
+# Data: Apr 16 2023
+# Contact: jason_ngo@live.com
 # License: MIT
-# Pre-requisites: [...UPDATE THIS...]
-# Any other information needed? [...UPDATE THIS...]
 
 
 #### Workspace setup ####
@@ -13,13 +11,13 @@ library(tidyverse)
 library(rstanarm)
 
 #### Read data ####
-analysis_data <- read_csv("outputs/data/analysis_data.csv")
+model_league_data <- read_csv("outputs/data/leaguedata2223.csv")
 
 ### Model data ####
-first_model <-
+goals_model <-
   stan_glm(
-    formula = flying_time ~ length + width,
-    data = analysis_data,
+    formula = GFGP ~ SPct + PPP + Pen60,
+    data = model_league_data,
     family = gaussian(),
     prior = normal(location = 0, scale = 2.5, autoscale = TRUE),
     prior_intercept = normal(location = 0, scale = 2.5, autoscale = TRUE),
@@ -30,8 +28,8 @@ first_model <-
 
 #### Save model ####
 saveRDS(
-  first_model,
-  file = "outputs/models/first_model.rds"
+  goals_model,
+  file = "outputs/models/goals_model.rds"
 )
 
 
