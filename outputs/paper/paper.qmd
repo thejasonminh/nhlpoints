@@ -1,5 +1,5 @@
 ---
-title: "Expanding the Popularity of the NHL Through Increased Goal Scoring"
+title: "Increased Goal Scoring in the NHL: An Attempt To Expand Popularity"
 subtitle: "An Analysis of the Increase in Goal Scoring From 2011 to 2023"
 author: 
   - Jason Ngo
@@ -10,7 +10,7 @@ format:
   pdf:
     documentclass: article
     geometry: margin = 1in
-    abstract: "Of the four major sports in the USA, the NHL is the least popular. In an effort to grow the game and make the game more exciting, the NHL wanted to increase goal scoring. Using data from the NHL, the paper will use graphs and tables to analyze average leaguewide goal scoring per game from the 2011-2012 to 2022-2023 seaons. A linear regression model will also be created to predict goal scoring averages in the upcoming seasons. Results show that the NHL was succesful in their mission as the average goals per game increased per season, with the current season exhibiting the highest average goals per game in a 10 year period. These findings suggest that factors such as increased player talent, more penalties and rule changes have resulted in more goals scored every season. To further grow the game, analysis on the topic of matchups, streaming, and media narratives is recommended."
+    abstract: "Of the four major sports in the USA, hockey is the least popular. In an effort to grow popularity, the NHL (National Hockey League) strove to increase goal scoring. Using data from the NHL, the paper will analyze average leaguewide goal scoring per game from the 2011-2012 to 2022-2023 seaons. A linear regression model will also be created to predict goal scoring averages in the upcoming seasons. Results show that the NHL was succesful as the average goals per game increased over a 10 year period. These findings suggest that increased player talent, more penalties and rule changes have resulted in more goals."
 number-sections: true
 bibliography: references.bib
 ---
@@ -26,6 +26,8 @@ library(tidyverse)
 
 # Introduction
 
+rework this in the context of goal scoring
+
 Hockey, Baseball, Football, and Basketball have become so popular in the United States, they've become branded as the "Four Major Sports of the USA." The top leagues that operate in each sport: The NHL, MLB, NFL and NBA are centralized in the USA. Many of the top players that have played, or currently play, in these leagues are American, and their popularity only serves to inspire more youth to follow in their footsteps. There are no other sports that can threaten the stranglehold that these four sports have on the USA.
 
 However, Hockey has begun to fall behind the other three. Viewership, revenue and general popularity all pale in comparison to the other three leagues. As a result; player salaries are lower in comparison to other sports and there is less youth talent in the pipelines. Two of the biggest factors for this decline are: High prices and low scoring. Due to the high upfront price of equipment and the amount of equipment required, many kids elect not to choose hockey as their sport and instead elect for cheaper options such as basketball, which only requires proper footwear. Low scoring was a result of goalies having too much freedom, and teams creating bulletproof defensive tactics that involved clogging the middle of the ice and using their goalie to stifle momentum.
@@ -36,6 +38,14 @@ In section 1 of the paper, the source of the data is discussed. Strengths and we
 
 
 # Data {#sec-data}
+talk about league dataset, forwards and dmen dataset
+talk about merging the nhl shooting pct into the league dataset
+talk about why i didnt choose to use nhl.com for league dataset(annoying to work with 12 datasets)
+talk about why i chose the columns i chose
+talk about why i chose the ppg values for forwards and dmen
+relationship between save pct, gaa, goals/game and shooting pct
+
+data is collected real time every game, with internal models used to calculate the special stats
 [@citeR]
 
 # Model
@@ -68,7 +78,19 @@ We can use maths by including latex between dollar signs, for instance $\theta$.
 
 # Results
 
+12 season trends in league data
+increase in good forwards and defensemen
+
 # Discussion
+
+goal scoring did increase, why?
+player talent increased -> correlates to better powerplays
+rule changes = less powerplays, could effect even strength scoring
+goalie equipment changing
+
+weaknesses = i did not go into an extreme in-depth level of the players themselves. there is a whole world of advance stats that could be used to analyze the increase of player talent.
+
+next steps = analyze viewership data to see the effect goal scoring has had on it. if we want to focus more on growing game, analysis on rivalries, game streaming and media narratives should be done.
 
 \newpage
 

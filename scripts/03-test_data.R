@@ -4,32 +4,49 @@
 # Data: Apr 16 2023
 # Contact: jason_ngo@live.com
 # License: MIT
-# Pre-requisites: None
+# Pre-requisites: Some knowledge of NHL statistics terminology
 
 #### Workspace setup ####
 library(tidyverse)
 library(here)
 
-agfpg_12seasons <- read.csv(here::here("outputs/data/avgoals_12seasons.csv"))
-shots_12seasons <- read.csv(here::here("outputs/data/avshots_12seasons.csv"))
-pp_12seasons <- read.csv(here::here("outputs/data/pp_12seasons.csv"))
+league_data <- read.csv(here::here("outputs/data/league_data.csv"))
+master_dmen <- read.csv(here::here("outputs/data/master_dmen.csv"))
+master_forwards <- read.csv(here::here("outputs/data/master_forwards.csv"))
 
 #### Test data ####
 
-## Let's test if there are 12 columns in each master dataset ##
+#### League dataset tests ####
 
-agfpg_12seasons |> unique() |> count()
-shots_12seasons |> unique() |> count()
-pp_12seasons |> unique() |> count()
+## Let's test if there are 12 columns, aka 12 seasons, in the league dataset ##
+league_data |> unique() |> count() == 12
 
 ## Let's test if average goals is less than 5 and greater than 1. AKA is it a realistic value ##
-agfpg_12seasons$Avg_Goals_Game < 10
-agfpg_12seasons$Avg_Goals_Game > 0
+league_data$Goals_Per_Game < 5
+league_data$Goals_Per_Game > 1
 
-## Let's test if shots per game is less than 45 and greater than 20. AKA is it a realistic value ##
-shots_12seasons$Shots_Per_Game > 20
-shots_12seasons$Shots_Per_Game < 45
+## Let's test if average shots per game is less than 45 and greater than 20. AKA is it a realistic value ##
+league_data$Shots_Against > 20
+league_data$Shots_Against < 45
 
-## Let's test if PP percentage is less than 40 and greataer than 5. AKA is it a realistic value ##
-pp_12seasons$Power_play_percentage > 5
-pp_12seasons$Power_play_percentage < 40
+## Let's test if average PP percentage is less than 40 and greataer than 5. AKA is it a realistic value ##
+league_data$PowerPlay_Pct > 5
+league_data$PowerPlay_Pct < 40
+
+## Let's test if mean shooting percentage is less than 20 and greataer than 5. AKA is it a realistic value ##
+league_data$Mean_Sh_Pct > 5
+league_data$Mean_Sh_Pct < 20
+
+## Let's test if average powerplay opportunities/game is less than 6 and greater than 1. AKA is it a realistic value ##
+league_data$PowerPlay_Game > 1
+league_data$PowerPlay_Game < 6
+
+#### Skater Dataset Tests #### 
+
+## Let's test if forward points per game is less than 2 and greater than 1
+master_forwards$Points_Per_Game > 1
+master_forwards$Points_Per_Game < 2
+
+## Let's test if defenseman points per game is less than 1.5 and greater than 0.5
+master_dmen$Points_Per_Game > 0.5
+master_dmen$Points_Per_Game < 1.5

@@ -11,18 +11,18 @@ library(tidyverse)
 library(rstanarm)
 
 #### Read data ####
-model_league_data <- read_csv("outputs/data/leaguedata2223.csv")
+league_data <- read.csv(here::here("outputs/data/league_data.csv"))
 
 ### Model data ####
 goals_model <-
   stan_glm(
-    formula = GFGP ~ SPct + PPP + Pen60,
-    data = model_league_data,
+    formula = Goals_Per_Game ~ PowerPlay_Game + PowerPlay_Pct + Save_Pct + Goals_Against_Avg + Mean_Sh_Pct,
+    data = league_data,
     family = gaussian(),
     prior = normal(location = 0, scale = 2.5, autoscale = TRUE),
     prior_intercept = normal(location = 0, scale = 2.5, autoscale = TRUE),
     prior_aux = exponential(rate = 1, autoscale = TRUE),
-    seed = 853
+    seed = 1122
   )
 
 
