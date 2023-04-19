@@ -11,7 +11,6 @@
 library(tidyverse)
 library(here)
 library(readxl)
-library(dplyr)
 
 league_data <- read_excel(here::here("inputs/data/Summaryleague_1122.xlsx"))
 
@@ -37,12 +36,12 @@ master_dmen <- rbind(dmen_p1, dmen_p2) |> rbind(dmen_p3)
 ### Fixing up the league_data dataset and renaming columns ###
 league_data[12,1] = "2011-12"
 league_data <- league_data |> rename(
-  "Goals_Per_Game" = "G",
-  "PowerPlay_Game" = "PPO",
-  "PowerPlay_Pct" = "PP%",
-  "Shots_Against" = "SA",
-  "Save_Pct" = "SV%",
-  "Goals_Against_Avg" = "GAA"
+  "Goals_PG" = "G",
+  "PP_PG" = "PPO",
+  "PP_Pct" = "PP%",
+  "SA" = "SA",
+  "SV_Pct" = "SV%",
+  "GA_Avg" = "GAA"
 )
 
 ### We're only concerned with season and p/gp from forwards and defensemen, so let's select those ###
@@ -50,8 +49,8 @@ master_forwards <- master_forwards |> select("Season", "P/GP")
 master_dmen <- master_dmen |> select("Season", "P/GP")
 
 ## Rename P/GP to something cleaner ##
-master_forwards <- master_forwards |> rename("Points_Per_Game" = "P/GP")
-master_dmen <- master_dmen |> rename("Points_Per_Game" = "P/GP")
+master_forwards <- master_forwards |> rename("Points_PG" = "P/GP")
+master_dmen <- master_dmen |> rename("Points_PG" = "P/GP")
 
 ### For shooting, we want season and s% (shooting percentage) ###
 master_shooting <- master_shooting |> select("Season", "S%")
@@ -61,10 +60,48 @@ master_shooting <- master_shooting |> group_by(Season) |> summarise(mean = mean(
 ## Round the values so they're nicer ##
 master_shooting <- master_shooting |> round(2)
 ## Rename the mean column ##
-master_shooting <- master_shooting |> rename("Mean_Sh_Pct" = "mean")
+master_shooting <- master_shooting |> rename("Sh_Pct" = "mean")
 
 ### We want to merge shooting data with league data, so let's standardize the Season column ###
 master_shooting <- master_shooting |> mutate(
+  Season = recode(
+    Season,
+    "20112012" = "2011-12",
+    "20122013" = "2012-13",
+    "20132014" = "2013-14",
+    "20142015" = "2014-15",
+    "20152016" = "2015-16",
+    "20162017" = "2016-17",
+    "20172018" = "2017-18",
+    "20182019" = "2018-19",
+    "20192020" = "2019-20",
+    "20202021" = "2020-21",
+    "20212022" = "2021-22",
+    "20222023" = "2022-23"
+  )
+)
+
+## Let's standardize the format of the Season column across our datasets ##
+
+master_forwards <- master_forwards |> mutate(
+  Season = recode(
+    Season,
+    "20112012" = "2011-12",
+    "20122013" = "2012-13",
+    "20132014" = "2013-14",
+    "20142015" = "2014-15",
+    "20152016" = "2015-16",
+    "20162017" = "2016-17",
+    "20172018" = "2017-18",
+    "20182019" = "2018-19",
+    "20192020" = "2019-20",
+    "20202021" = "2020-21",
+    "20212022" = "2021-22",
+    "20222023" = "2022-23"
+  )
+)
+
+master_dmen <- master_dmen |> mutate(
   Season = recode(
     Season,
     "20112012" = "2011-12",

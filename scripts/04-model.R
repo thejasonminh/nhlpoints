@@ -16,7 +16,7 @@ league_data <- read.csv(here::here("outputs/data/league_data.csv"))
 ### Model data ####
 goals_model <-
   stan_glm(
-    formula = Goals_Per_Game ~ PowerPlay_Game + PowerPlay_Pct + Save_Pct + Goals_Against_Avg + Mean_Sh_Pct,
+    formula = Goals_PG ~ SV_Pct + GA_Avg + Sh_Pct + PP_PG * PP_Pct,
     data = league_data,
     family = gaussian(),
     prior = normal(location = 0, scale = 2.5, autoscale = TRUE),
@@ -29,7 +29,7 @@ goals_model <-
 #### Save model ####
 saveRDS(
   goals_model,
-  file = "outputs/models/goals_model.rds"
+  file = here::here("outputs/models/goals_model.rds")
 )
 
 

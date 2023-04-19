@@ -1,4 +1,4 @@
-Season,Goals_Per_Game,PowerPlay_Game,PowerPlay_Pct,Shots_Against,Save_Pct,Goals_Against_Avg,Mean_Sh_Pct
+Season,Goals_PG,PP_PG,PP_Pct,SA,SV_Pct,GA_Avg,Sh_Pct
 2011-12,2.73,3.31,17.31,29.7,0.914,2.54,8.95
 2012-13,2.72,3.32,18.22,29,0.912,2.54,9.16
 2013-14,2.74,3.27,17.89,30,0.914,2.56,8.91
