@@ -1,4 +1,4 @@
-# Increased Goal Scoring in the NHL: An Attempt To Expand Popularity
+# Better Talent and Rule Changes Have Resulted in More Goals in the NHL
 
 ## Overview
 
@@ -12,4 +12,4 @@ The repo is structured as follows:
 -   `outputs/data` contains the cleaned datasets that were constructed.
 -   `outputs/paper` contains the files used to generate the paper, including the Quarto document and reference bibliography file, as well as the PDF of the paper.
 -   `outputs/models` contains the multiple linear regression model used in the paper.
--   `scripts` contains the R scripts used to simulate, download, clean, model and test datat.
+-   `scripts` contains the R scripts used to simulate, download, clean, model and test data.

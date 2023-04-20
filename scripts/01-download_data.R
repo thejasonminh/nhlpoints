@@ -19,4 +19,4 @@ library(tidyverse)
 ## defensemen data was selected by filtering all players with 0.6 points per game or above from those seasons ##
 
 # I acknowledge that the nhl api exists and is a usable R package, however.. #
-# ..isolating specific statistics by teams during a 10 year period using the API was too difficult #
+# ..isolating specific statistics by teams and players during a 10 year period using the API was too difficult #
